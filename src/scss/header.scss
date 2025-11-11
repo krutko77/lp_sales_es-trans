@@ -1,0 +1,451 @@
+//header
+.header {
+   position: absolute;
+   background-color: $mainBgColor;
+   width: 100%;
+   z-index: 10;
+   border-bottom: solid 1px $linkOtherColor;
+
+   &__container-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      max-width: 1300px;
+      min-height: 70px;
+      flex-wrap: wrap;
+
+      @media (max-width: $tablet) {
+         min-height: calc(60px + 10*((100vw - 768px) / (1260 - 768)));
+
+         padding: 0 15px;
+      }
+   }
+
+   &__logo {
+      width: 240px;
+      margin: 10px 20px 10px 0;
+      position: relative;
+      z-index: 10;
+
+      @media (max-width: $tablet) {
+         margin: 0 20px 0 0;
+      }
+
+      @media (max-width: $mobile) {
+         width: calc(210px + 30*((100vw - 768px) / (1260 - 768)));
+      }
+
+      @media (max-width: $mobileSmall) {
+         display: none;
+      }
+   }
+
+   &__logo img {
+      width: 100%;
+      aspect-ratio: 240/43;
+      vertical-align: baseline;
+   }
+}
+
+.menu {
+   display: flex;
+   align-items: center;
+   margin: 10px 0 10px;
+
+   @media (max-width: $tablet) {
+      margin: 0;
+   }
+
+   @media (max-width: $mobileSmall) {
+      width: 100%;
+   }
+
+   &__body {
+      margin-right: 20px;
+
+      @media (max-width: $tablet) {
+         position: fixed;
+         top: 0;
+         left: -100%;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(242, 242, 242, 1.0);
+         padding: 150px 20px 0;
+         margin-right: 0;
+         overflow: auto;
+         transition: left 0.3s ease;
+      }
+
+      .menu-open & {
+         left: 0;
+         transition: left 0.3s linear;
+      }
+   }
+
+   // Плашка
+   &__body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: $mainBgColor;
+      z-index: 2;
+      min-height: 70px;
+      display: none;
+
+      @media (max-width: $tablet) {
+         display: block;
+         min-height: calc(60px + 10*((100vw - 768px) / (1260 - 768)));
+      }
+
+      .menu-open & {
+         @media (max-width: $tablet) and (min-aspect-ratio: 1024/600) {
+            position: fixed;
+         }
+      }
+   }
+
+   &__icon-wrapper {
+      display: flex;
+      align-items: center;
+
+      @media (max-width: $mobileSmall) {
+         width: 100%;
+         justify-content: space-between;
+      }
+   }
+
+   &__list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      @media (max-width: $tablet) {
+         flex-direction: column;
+      }
+   }
+
+   // класс menu-item будет в WP
+   &__item,
+   &-item {
+      position: relative;
+      padding: 4px 0;
+
+      @media (max-width: $tablet) {
+         padding: 0;
+         margin: 0 0 30px;
+      }
+   }
+
+   &__item:not(:last-child),
+   &-item:not(:last-child) {
+      margin-right: 25px;
+
+      @media (max-width: $pc) {
+         margin-right: calc(10px + 5*((100vw - 768px) / (1260 - 768)));
+      }
+
+      @media (max-width: $tablet) {
+         margin-right: 0;
+      }
+   }
+
+   &__link {
+      position: relative;
+      font-size: toRem(14);
+      padding: toEm(4, 14) 0 toEm(4, 14);
+      text-transform: uppercase;
+      cursor: pointer;
+
+      @media (max-width: $pc) {
+         font-size: calc(toRem(12) + 2*((100vw - 768px) / (1260 - 768)));
+      }
+
+      @media (max-width: $tablet) {
+         font-size: toRem(22);
+      }
+   }
+
+   &__link::before,
+   &__link::after {
+      content: '';
+      position: absolute;
+      top: 90%;
+      width: 0;
+      height: 2px;
+      background: $accentColor;
+      transition: 0.3s;
+   }
+
+   &__link::before {
+      left: calc(50%);
+   }
+
+   &__link::after {
+      right: calc(50%);
+   }
+
+   &__sub-list,
+   .sub-menu {
+      position: absolute;
+      top: 100%;
+      left: 7px;
+      min-width: 195px;
+      background-color: $footerBgColor;
+      padding: toEm(5, 12) 0 toEm(5, 12) toEm(5, 12);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.5s ease 0s,
+         visibility 0.3s ease 0s,
+         max-height 0.5s ease 0s;
+
+      @media (max-width: $tablet) {
+         position: relative;
+         left: 0;
+         max-height: 0;
+         overflow: hidden;
+         flex: 1 1 100%;
+         padding: 0 0 0 toEm(35, 16);
+      }
+   }
+
+   // в WP будут оба класса menu__link и sub-link
+   &__link.sub-link {
+      font-size: toRem(12);
+
+      @media (max-width: $pc) {
+         font-size: calc(toRem(10) + 2*((100vw - 768px) / (1260 - 768)));
+      }
+
+      @media (max-width: $tablet) {
+         font-size: toRem(16);
+      }
+   }
+
+   &__link._navigator-active::before,
+   &__link._navigator-active::after {
+      width: calc(50%);
+   }
+
+   &__arrow {
+      display: block;
+      position: relative;
+      z-index: 50;
+      width: 0px;
+      height: 0px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 7px solid $secondLinkColor;
+      transition: transform 0.3s ease 0s;
+   }
+
+   &__select-box {
+      display: flex;
+      align-items: center;
+      margin: 0 20px 0;
+
+      @media (max-width: $mobileSmall) {
+         margin-left: 10px;
+      }
+   }
+}
+
+select {
+   -moz-appearance: none;
+   -webkit-appearance: none;
+   border: none;
+   position: relative;
+   outline: none;
+   padding: 3px 7px;
+
+   @media (max-width: $tablet) {
+      margin-right: 3px;
+   }
+
+   @media (max-width: $mobileSmall) {
+      font-size: 18px;
+   }
+
+}
+
+@media (any-hover: hover) {
+
+   .menu__link:hover::before,
+   .menu__link:hover::after {
+      width: calc(50%);
+   }
+
+   .menu__list>li:hover .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+   }
+}
+
+.menu-item-has-children {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+   position: relative;
+}
+
+.menu-item-has-children>a {
+   margin-right: 10px;
+}
+
+@media (max-width: $tablet) {
+   .menu-item-has-children>a {
+      margin-right: toEm(15, 22);
+   }
+
+   .sub-menu {
+      margin-top: 10px;
+   }
+
+   .sub-menu>li {
+      margin: 0 0 toEm(15, 16);
+   }
+
+   .sub-menu>li:first-child {
+      margin-top: toEm(15, 16);
+   }
+}
+
+html.touch .menu__list>li {
+   flex-wrap: wrap;
+}
+
+html.touch .menu__list>li._submenu-active .sub-menu {
+   max-height: 200px;
+   opacity: 1;
+   visibility: visible;
+   pointer-events: all;
+}
+
+html.touch .menu__list>li._submenu-active .menu__arrow {
+   transform: rotate(-180deg);
+}
+
+.social {
+   display: flex;
+   align-items: center;
+   position: relative;
+   z-index: 10;
+
+   &__item {
+      margin-right: 20px;
+   }
+
+   &__item:last-child {
+      margin-right: 0;
+
+      @media (max-width: $tablet) {
+         margin-right: 20px;
+      }
+   }
+
+   &__icon {
+      height: 40px;
+      width: 40px;
+      opacity: 0.7;
+      vertical-align: middle;
+      transition: opacity 0.3s ease;
+   }
+
+   @media (any-hover: hover) {
+      .social__icon:hover {
+         opacity: 1;
+      }
+   }
+
+   @media (any-hover: none) {
+      .social__icon {
+         opacity: 1;
+      }
+   }
+}
+
+.opening-hours-telephone {
+   text-align: center;
+   position: relative;
+}
+
+.telephone {
+   margin-bottom: 8px;
+}
+
+.opening-hours {
+   font-size: toRem(12);
+}
+
+//headerScroll
+._header-scroll {
+   position: fixed;
+   top: -200px;
+}
+
+._header-show {
+   border-bottom: none;
+   transition: top 0.7s 0s;
+   top: 0;
+   box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+//Burger
+.icon-menu {
+   display: none;
+
+   @media (max-width: $tablet) {
+      display: block;
+      position: relative;
+      width: toRem(30);
+      height: toRem(18);
+      cursor: pointer;
+      z-index: 5;
+
+      span,
+      &::before,
+      &::after {
+         content: "";
+         transition: all 0.3s ease 0s;
+         right: 0;
+         position: absolute;
+         width: 100%;
+         height: toRem(2);
+         background-color: $mainColor;
+      }
+
+      &::before {
+         top: 0;
+      }
+
+      &::after {
+         bottom: 0;
+      }
+
+      span {
+         top: calc(50% - toRem(1));
+      }
+
+      .menu-open & {
+         span {
+            width: 0;
+         }
+
+         &::before {
+            top: calc(50% - toRem(1));
+            transform: rotate(-45deg);
+         }
+
+         &::after {
+            bottom: calc(50% - toRem(1));
+            transform: rotate(45deg);
+         }
+      }
+   }
+}

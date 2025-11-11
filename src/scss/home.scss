@@ -1,0 +1,200 @@
+// home
+.home {
+   height: 100vh;
+   padding: 120px 0 70px;
+   background-image: url('./../img/bg-home-1920-60.jpg');
+   background-size: cover;
+   background-position: bottom center;
+   width: 100%;
+   aspect-ratio: 16/9;
+   color: $mainBgColor;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: flex-end;
+
+	@media (max-width:$tablet) {
+		background-position: bottom right 70%;
+	}
+
+	@media (max-width: $tablet) and (min-aspect-ratio: 1024/600) {
+		min-height: 650px;
+		background-position: bottom right 80%;
+	}
+
+   @media (max-width:$mobileSmall) {
+      padding: 80px 0 90px;
+      background-image: url('./../img/bg-home-480-60-2.jpg');
+		background-position: bottom center;
+   }
+
+   &__container {
+      width: 100%;
+
+      @media (max-width:$mobileSmall) {
+         height: 100%;
+      }
+   }
+
+   &__content {
+      display: flex;
+      text-transform: uppercase;
+
+      @media (max-width:$mobileSmall) {
+         height: 100%;
+      }
+   }
+
+   &__left-block {
+      flex: 0 1 60%;
+
+      @media (max-width:$mobile) {
+         flex: 0 1 50%;
+      }
+
+      @media (max-width:$mobileSmall) {
+         display: none;
+      }
+   }
+
+   &__right-block {
+      flex: 0 1 40%;
+
+      @media (max-width:$mobile) {
+         flex: 0 1 50%;
+      }
+
+      @media (max-width:$mobileSmall) {
+         flex: 1 1 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+      }
+   }
+
+   &__title {
+      font-size: toRem(80);
+      text-align: left;
+      margin-bottom: 0;
+      opacity: 0;
+      transform: translateY(50px);
+      text-shadow: 0 0 3px $mainColor;
+
+      @media (max-width:1500px) {
+         font-size: calc(toRem(45) + 25*((100vw - 320px) / (1500 - 320)));
+      }
+   }
+
+   &__title._watcher-view {
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform 1.3s ease 0s, opacity 1.3s ease 0s;
+   }
+
+   &__label {
+      font-size: toRem(40);
+      font-weight: 900;
+      line-height: math.div(60, 50);
+      margin-bottom: toEm(40, 40);
+      opacity: 0;
+      transform: translateY(50px);
+      text-shadow: 0 0 3px $mainColor;
+
+      @media (max-width:1500px) {
+         font-size: calc(toRem(20) + 10*((100vw - 320px) / (1500 - 320)));
+      }
+
+      @media (max-width:$tablet) {
+         margin-bottom: 60px;
+      }
+
+      @media (max-width:$mobile) {
+         margin-bottom: 50px;
+      }
+
+      @media (max-width:$mobile) {
+         margin-bottom: 30px;
+      }
+   }
+
+   &__label._watcher-view {
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform 1.2s ease 0.4s, opacity 1.2s ease 0.4s;
+   }
+
+   &__icons {
+      position: relative;
+      top: -1px;
+      flex-shrink: 0;
+      height: 30px;
+      width: 30px;
+      margin-right: 4px;
+      fill: $accentColor;
+
+      @media (max-width: $tablet) {
+         height: 27px;
+         width: 27px;
+         top: -2px;
+      }
+
+      @media (max-width: $mobile) {
+         height: 25px;
+         width: 25px;
+         top: -5px;
+         margin-right: 3px;
+      }
+   }
+
+   &__action {
+      font-weight: 500;
+   }
+
+   .action__text {
+      margin-bottom: calc(toRem(15) + 15*((100vw - 320px) / (1500 - 320)));
+   }
+
+   .list {
+      margin-bottom: calc(toRem(10) + 40*((100vw - 320px) / (1500 - 320)));
+
+      &__item {
+         display: flex;
+         margin-bottom: toEm(35, 25);
+
+         @media (max-width: $mobile) {
+            margin-bottom: 20px;
+         }
+
+         @media (max-width: $mobileSmall) {
+            margin-bottom: 10px;
+         }
+
+         p {
+            text-transform: uppercase;
+            font-size: 25px;
+            font-weight: 500;
+            line-height: 1.2;
+            text-shadow: 0 0 3px $mainColor;
+
+            @media (max-width:1500px) {
+               font-size: calc(toRem(15) + 4*((100vw - 320px) / (1500 - 320)));
+            }
+
+         }
+      }
+   }
+
+}
+
+.preload {
+   transition: none !important;
+}
+
+.offer-button {
+	min-width: 175px;
+}
+
+.action__text {
+	text-shadow: 0 0 3px $mainColor;
+}

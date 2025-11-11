@@ -1,0 +1,185 @@
+// reviews
+.reviews {
+   background-color: $footerBgColor;
+	
+   &__subtitle-box {
+      position: relative;
+   }
+
+	&__subtitle-box.swiper-box {
+		@media (max-width: $mobileSmall) {
+         margin-bottom: 20px;
+      }
+	}
+
+   &__list {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+   }
+
+   .list__item {
+      padding: 0 25px;
+      margin-bottom: 20px;
+
+      @media (max-width: $tablet) {
+         padding: 0 10px;
+      }
+   }
+
+   .list__item-wrapper {
+      overflow: hidden;
+      height: 60px;
+
+      @media (max-width: $pc) {
+         height: calc(40px + 20*((100vw - 320px) / (1260 - 320)));
+      }
+   }
+
+   .list__img {
+      width: 100%;
+      height: 100%;
+   }
+
+   &__video-box {
+      display: none;
+      position: absolute;
+      bottom: -10px;
+      right: 0;
+      aspect-ratio: 70/35;
+      overflow: hidden;
+
+      @media (max-width: $mobileSmall) {
+         display: inline-block;
+      }
+   }
+}
+
+.swiper {
+
+   //Стили для слайдера на главной странице
+   &__label.home-swiper {
+      padding-top: 10px;
+      text-align: center;
+      font-size: 16px;
+
+      @media (max-width:$pc) {
+         font-size: calc(toRem(14) + 2*((100vw - 320px) / (1200 - 320)));
+      }
+   }
+
+   &__link.home-swiper {
+      text-transform: uppercase;
+   }
+
+   &__image.home-swiper {
+      text-align: center;
+      aspect-ratio: 350/481;
+      overflow: hidden;
+   }
+
+   &__img.home-swiper {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+   }
+
+   //Стили для слайдера на странице вакансии водитель
+   &__content {
+      background-color: $secondLightColor;
+      border: 1px solid $secondLinkColor;
+      border-radius: 5px;
+      padding: 15px 10px;
+      min-height: toRem(480);
+      /* max-width: toRem(400); */
+
+      @media (max-width: $pc) {
+         min-height: toRem(420);
+      }
+
+      @media (max-width: $tablet) {
+         min-height: toRem(340);
+      }
+
+      @media (max-width: $mobile) {
+         min-height: toRem(400);
+      }
+
+      @media (max-width: $mobileSmall) {
+         min-height: toRem(420);
+      }
+   }
+
+   &__text.reviews__text {
+      font-size: toRem(18);
+
+      @media (max-width:1500px) {
+         font-size: calc(toRem(14) + 4*((100vw - 320px) / (1500 - 320)));
+      }
+   }
+}
+
+// Меняем установленные стили стрелок
+:root {
+   --swiper-navigation-size: 44px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+   position: absolute;
+   top: 41%;
+   width: calc(var(--swiper-navigation-size) / 44 * 27);
+   height: var(--swiper-navigation-size);
+   margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+   z-index: 10;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: $accentColor;
+
+   @media (max-width: $mobileSmall) {
+      display: none;
+   }
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+   opacity: 0.35;
+   cursor: auto;
+   pointer-events: none;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+   font-family: swiper-icons;
+   font-size: var(--swiper-navigation-size);
+   text-transform: none !important;
+   letter-spacing: 0;
+   text-transform: none;
+   font-variant: initial;
+   line-height: 1;
+}
+
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+   left: 0px;
+   right: auto;
+}
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+   content: "prev";
+}
+
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+   right: 0px;
+   left: auto;
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+   content: "next";
+}
