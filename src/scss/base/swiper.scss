@@ -36,3 +36,7 @@
 .swiper-button-lock {
 	display: none !important;
 }
+// скрыть штатные стрелки слайдера
+svg.swiper-navigation-icon {
+	display: none !important;
+}

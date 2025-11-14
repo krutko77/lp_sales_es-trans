@@ -24,7 +24,7 @@ $mail->Port       = 465;
 //От кого письмо
 $mail->setFrom('main@es-trans.ru', 'Сайт ЕС Транс'); // Указать нужный E-mail
 //Кому отправить
-$mail->addAddress('kpv@es-trans.pro'); // Указать нужный E-mail 
+$mail->addAddress('eli@es-trans.pro'); // Указать нужный E-mail 
 //Тема письма
 $mail->Subject = 'Привет! Это запрос с рекламного лендинга ЕС Транс';
 

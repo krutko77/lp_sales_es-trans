@@ -42,12 +42,12 @@ export const css = () => {
 			)
 		)
 		*/
-		.pipe(
+		/* .pipe(
 			app.plugins.if(
 				app.isBuild,
 				replace(/(@import\s+url\(['"]?.*?;)\s+/g, '$1') // Видаляє пробіли
 			)
-		)
+		) */
 		.pipe(
 			app.plugins.if(
 				app.isBuild,
