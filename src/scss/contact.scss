@@ -1,16 +1,5 @@
 	// contact
 .contact {
-	padding-bottom: 0;
-   padding-top: 160px;
-
-   @media (max-width:1500px) {
-      padding-top: calc(toRem(100) + 60*((100vw - 320px) / (1500 - 320)));
-   }
-	/* min-height: calc(100vh - 160px); */
-	@media (max-width:$tablet) {
-      padding-bottom: 60px;
-   }
-
 	&__content {
 		display: flex;
 

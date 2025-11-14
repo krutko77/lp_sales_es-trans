@@ -119,15 +119,12 @@ body::after {
 
 .popup__top {
    display: flex;
+	align-items: center;
 
    @media (max-width:$mobileSmall) {
       flex-direction: column-reverse;
       align-items: center;
    }
-}
-
-.popup__top.driver {
-   display: block;
 }
 
 .popup__img-wrapper-form {
@@ -139,7 +136,6 @@ body::after {
 }
 
 .popup__description {
-   flex: 1 0 60%;
    font-size: toRem(20);
    line-height: 1.5;
 

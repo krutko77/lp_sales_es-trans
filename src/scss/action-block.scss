@@ -16,10 +16,4 @@
       text-align: center;
       text-shadow: 0 0 5px $mainColor;
    }
-
-   &__subtitle {
-      @media (max-width: 1500px) {
-         margin-bottom: calc(30px + 5*((100vw - 480px) / (1260 - 480)));
-      }
-   }
 }

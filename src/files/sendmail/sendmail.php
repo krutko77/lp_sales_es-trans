@@ -26,11 +26,11 @@ $mail->setFrom('main@es-trans.ru', 'Сайт ЕС Транс'); // Указат�
 //Кому отправить
 $mail->addAddress('kpv@es-trans.pro'); // Указать нужный E-mail 
 //Тема письма
-$mail->Subject = 'Привет! Это запрос с сайта ЕС Транс';
+$mail->Subject = 'Привет! Это запрос с рекламного лендинга ЕС Транс';
 
 //Тело письма
 $body = '<h2>Данные из формы обратной связи</h2>';
-//Форма по услугам растаможки
+//Форма
 if (trim(!empty($_POST['company-name-customs']))) {
 	$body .= '<p><strong>Название компании:</strong> ' . $_POST['company-name-customs'] . '</p>';
 }
@@ -44,30 +44,7 @@ if (trim(!empty($_POST['email-customs']))) {
 	$body .= '<p><strong>Email:</strong> ' . $_POST['email-customs'] . '</p>';
 }
 if (trim(!empty($_POST['text-message-customs']))) {
-	$body .= '<p><strong>Вопрос о растаможке:</strong> ' . $_POST['text-message-customs'] . '</p>';
-}
-//Форма по вакансиям менеджера или логиста
-if (trim(!empty($_POST['first-name-offer']))) {
-	$body .= '<p><strong>Имя кандидата:</strong> ' . $_POST['first-name-offer'] . '</p>';
-}
-if (trim(!empty($_POST['last-name-offer']))) {
-	$body .= '<p><strong>Фамилия кандидата:</strong> ' . $_POST['last-name-offer'] . '</p>';
-}
-if (trim(!empty($_POST['tel-offer']))) {
-	$body .= '<p><strong>Телефон или мессенджер:</strong> ' . $_POST['tel-offer'] . '</p>';
-}
-if (trim(!empty($_POST['email-offer']))) {
-	$body .= '<p><strong>Email:</strong> ' . $_POST['email-offer'] . '</p>';
-}
-if (trim(!empty($_POST['text-message-offer']))) {
-	$body .= '<p><strong>Сообщение по вакансии:</strong> ' . $_POST['text-message-offer'] . '</p>';
-}
-//Форма по вакансии водитель
-if (trim(!empty($_POST['name-driver']))) {
-	$body .= '<p><strong>Имя и фамилия водителя:</strong> ' . $_POST['name-driver'] . '</p>';
-}
-if (trim(!empty($_POST['tel-driver']))) {
-	$body .= '<p><strong>Телефон или мессенджер водителя:</strong> ' . $_POST['tel-driver'] . '</p>';
+	$body .= '<p><strong>Информация о грузе и маршруте:</strong> ' . $_POST['text-message-customs'] . '</p>';
 }
 
 	// Проверка на бота
